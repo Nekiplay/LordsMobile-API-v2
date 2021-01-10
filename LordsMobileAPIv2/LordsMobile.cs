@@ -40,6 +40,21 @@ namespace LordsMobileAPIv2
             {
                 this.Adress = adress;
             }
+            public int Gems
+            {
+                get
+                {
+                    if (Adress.Gems != IntPtr.Zero)
+                    {
+                        System.Diagnostics.Process game = System.Diagnostics.Process.GetProcessesByName("Lords Mobile").FirstOrDefault();
+                        var process = new ProcessSharp(game, MemoryType.Remote);
+                        int stamina = process.Memory.Read<int>(Adress.Gems);
+
+                        return stamina;
+                    }
+                    else { return -1; }
+                }
+            }
             public int Stamina
             {
                 get
@@ -111,6 +126,9 @@ namespace LordsMobileAPIv2
                     }
                     if (this.Stamina != IntPtr.Zero)
                     {
+                        this.Gems = this.Stamina + 0x44;
+                        if (debug)
+                            Console.WriteLine("Gems Adress: " + Gems.ToString("X"));
                         this.Energy = this.Stamina + 0x150;
                         if (debug)
                             Console.WriteLine("Energy Adress: " + Energy.ToString("X"));
@@ -170,6 +188,7 @@ namespace LordsMobileAPIv2
                     }
                 }
             }
+            public IntPtr Gems = IntPtr.Zero;
             public IntPtr Stamina = IntPtr.Zero;
             public IntPtr Energy = IntPtr.Zero;
             public IntPtr Power = IntPtr.Zero;

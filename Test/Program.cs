@@ -15,12 +15,14 @@ namespace Test
         {
             LordsMobileAPI.User user = new LordsMobileAPI.User(adress);
             LordsMobileAPI.Barrack barrack = new LordsMobileAPI.Barrack(adress);
-            Console.WriteLine("====== User Info ======");
+            Console.WriteLine("====== User Info =======");
+            Console.WriteLine("Gems: " + user.Gems);
             Console.WriteLine("Power: " + user.Power);
             Console.WriteLine("Stamina: " + user.Stamina);
             Console.WriteLine("Energy: " + user.Energy);
             Console.WriteLine("===== Barrack Info =====");
             Console.WriteLine("Total army: " + barrack.Army);
+            Console.WriteLine("========================");
             Console.ReadLine();
         }
     }
