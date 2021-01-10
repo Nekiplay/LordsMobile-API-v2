@@ -102,7 +102,7 @@ namespace LordsMobileAPIv2
                 {
                     Jupiter.MemoryModule m = new Jupiter.MemoryModule("Lords Mobile");
                     /* Stamina */
-                    var x = m.PatternScan("C0 D6 ?? ?? ?? 02 ?? 00 00 00 00 00 00 00 00 00 1D 00 38");
+                    var x = m.PatternScan("C0 D6 ?? ?? ?? ?? ?? 00 00 00 00 00 00 00 00 00 1D 00 38");
                     if (x.Count() == 1)
                     {
                         this.Stamina = x.First() + 0x18;
