@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Jupiter" Version="1.6.0" />
+    <PackageReference Include="Process.NET" Version="1.0.8" />
+  </ItemGroup>
+
+</Project>
