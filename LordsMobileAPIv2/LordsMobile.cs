@@ -58,7 +58,7 @@ namespace LordsMobileAPIv2
                     var x2 = m.PatternScan("79 3F 00 00 00 00 00 00 63 BE FA 5F 00 00 00 00 40 44 05");
                     if (x2.Count() == 1)
                     {
-                        this.Energy = x2.First() + 0x18;
+                        this.Energy = x2.First() + 0x18; // 1
                     }
                 }
             }
