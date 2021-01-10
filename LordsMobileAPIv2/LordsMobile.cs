@@ -102,12 +102,12 @@ namespace LordsMobileAPIv2
         }
         public class Adress
         {
-            public Adress(bool debug = false, bool fast = true)
+            public Adress(bool Debug = false, bool Fast = true)
             {
-                if (!fast)
-                    Find(debug);
+                if (!Fast)
+                    Find(Debug);
                 else 
-                    Find2(debug);
+                    Find2(Debug);
 
             }
             public void Find2(bool debug)

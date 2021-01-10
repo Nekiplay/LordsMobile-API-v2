@@ -10,11 +10,11 @@ namespace Test
 {
     class Program
     {
-        public static LordsMobileAPI.Adress adress = new LordsMobileAPI.Adress(true);
+        public static LordsMobileAPI.Adress adress = new LordsMobileAPI.Adress(Debug: true, Fast: true);
         static void Main(string[] args)
         {
-            LordsMobileAPI.User user = new LordsMobileAPI.User(adress);
-            LordsMobileAPI.Barrack barrack = new LordsMobileAPI.Barrack(adress);
+            LordsMobileAPI.User user = new LordsMobileAPI.User(adress: adress);
+            LordsMobileAPI.Barrack barrack = new LordsMobileAPI.Barrack(adress: adress);
             Console.WriteLine("====== User Info =======");
             Console.WriteLine("Gems: " + user.Gems);
             Console.WriteLine("Power: " + user.Power);
