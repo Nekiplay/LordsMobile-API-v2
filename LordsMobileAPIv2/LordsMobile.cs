@@ -10,6 +10,98 @@ namespace LordsMobileAPIv2
 {
     public class LordsMobileAPI
     {
+        public class Asylum
+        {
+            public Adress Adress;
+            public Asylum(Adress adress)
+            {
+                this.Adress = adress;
+            }
+            public int Army
+            {
+                get
+                {
+                    if (Adress.AsylumArmyCount != IntPtr.Zero)
+                    {
+                        System.Diagnostics.Process game = System.Diagnostics.Process.GetProcessesByName("Lords Mobile").FirstOrDefault();
+                        var process = new ProcessSharp(game, MemoryType.Remote);
+                        int stamina = process.Memory.Read<int>(Adress.AsylumArmyCount);
+
+                        return stamina;
+                    }
+                    else { return -1; }
+                }
+            }
+            public int Hands
+            {
+                get
+                {
+                    if (Adress.GuildHands != IntPtr.Zero)
+                    {
+                        System.Diagnostics.Process game = System.Diagnostics.Process.GetProcessesByName("Lords Mobile").FirstOrDefault();
+                        var process = new ProcessSharp(game, MemoryType.Remote);
+                        int stamina = process.Memory.Read<int>(Adress.GuildHands);
+
+                        return stamina;
+                    }
+                    else { return -1; }
+                }
+            }
+        }
+
+        public class Guild
+        {
+            public Adress Adress;
+            public Guild(Adress adress)
+            {
+                this.Adress = adress;
+            }
+            public int Power
+            {
+                get
+                {
+                    if (Adress.GuildPower != IntPtr.Zero)
+                    {
+                        System.Diagnostics.Process game = System.Diagnostics.Process.GetProcessesByName("Lords Mobile").FirstOrDefault();
+                        var process = new ProcessSharp(game, MemoryType.Remote);
+                        int stamina = process.Memory.Read<int>(Adress.GuildPower);
+
+                        return stamina;
+                    }
+                    else { return -1; }
+                }
+            }
+            public int Gifts
+            {
+                get
+                {
+                    if (Adress.GuildPresents != IntPtr.Zero)
+                    {
+                        System.Diagnostics.Process game = System.Diagnostics.Process.GetProcessesByName("Lords Mobile").FirstOrDefault();
+                        var process = new ProcessSharp(game, MemoryType.Remote);
+                        int stamina = process.Memory.Read<int>(Adress.GuildPresents);
+
+                        return stamina;
+                    }
+                    else { return -1; }
+                }
+            }
+            public int Hands
+            {
+                get
+                {
+                    if (Adress.GuildHands != IntPtr.Zero)
+                    {
+                        System.Diagnostics.Process game = System.Diagnostics.Process.GetProcessesByName("Lords Mobile").FirstOrDefault();
+                        var process = new ProcessSharp(game, MemoryType.Remote);
+                        int stamina = process.Memory.Read<int>(Adress.GuildHands);
+
+                        return stamina;
+                    }
+                    else { return -1; }
+                }
+            }
+        }
         public class Barrack
         {
             public Adress Adress;
@@ -138,6 +230,16 @@ namespace LordsMobileAPIv2
                         this.BarrackArmy = this.Stamina + 0x908;
                         if (debug)
                             Console.WriteLine("Barrack army Adress: " + BarrackArmy.ToString("X"));
+                        this.GuildHands = IntPtr.Subtract(this.Stamina, 0x153C8);
+                        if (debug)
+                            Console.WriteLine("Guild hands Adress: " + GuildHands.ToString("X"));
+                        this.GuildPower = IntPtr.Add(this.Stamina, 0x200);
+                        if (debug)
+                            Console.WriteLine("Guild power Adress: " + GuildPower.ToString("X"));
+                        this.GuildPresents = IntPtr.Add(this.Stamina, 0xBC28);
+                        if (debug)
+                            Console.WriteLine("Guild presents Adress: " + GuildPresents.ToString("X"));
+
                     }
                 }
             }
@@ -193,6 +295,10 @@ namespace LordsMobileAPIv2
             public IntPtr Energy = IntPtr.Zero;
             public IntPtr Power = IntPtr.Zero;
             public IntPtr BarrackArmy = IntPtr.Zero;
+            public IntPtr GuildPower = IntPtr.Zero;
+            public IntPtr GuildPresents = IntPtr.Zero;
+            public IntPtr GuildHands = IntPtr.Zero;
+            public IntPtr AsylumArmyCount = IntPtr.Zero;
         }
     }
 }
