@@ -9,7 +9,7 @@ namespace Test
 {
     class Program
     {
-        public static LordsMobileAPI.Adress adress = new LordsMobileAPI.Adress();
+        public static LordsMobileAPI.Adress adress = new LordsMobileAPI.Adress(false);
         static void Main(string[] args)
         {
             LordsMobileAPI.User lords = new LordsMobileAPI.User(adress);

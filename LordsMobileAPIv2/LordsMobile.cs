@@ -39,10 +39,21 @@ namespace LordsMobileAPIv2
                     return stamina;
                 }
             }
+            //public long IGG_ID
+            //{
+            //    get
+            //    {
+            //        System.Diagnostics.Process game = System.Diagnostics.Process.GetProcessesByName("Lords Mobile").FirstOrDefault();
+            //        var process = new ProcessSharp(game, MemoryType.Remote);
+            //        long stamina = process.Memory.Read<long>(Adress.IGGID);
+            //
+            //        return stamina;
+            //    }
+            //}
         }
         public class Adress
         {
-            public Adress()
+            public Adress(bool debug = false)
             {
                 /* Stamina */
                 System.Diagnostics.Process game = System.Diagnostics.Process.GetProcessesByName("Lords Mobile").FirstOrDefault();
@@ -53,12 +64,16 @@ namespace LordsMobileAPIv2
                     if (x.Count() == 1)
                     {
                         this.Stamina = x.First() + 0x18;
+                        if (debug)
+                            Console.WriteLine("Stamina Adress: " + Stamina.ToString("X"));
                     }
                     /* Energy */
-                    var x2 = m.PatternScan("79 3F 00 00 00 00 00 00 63 BE FA 5F 00 00 00 00 40 44 05");
+                    var x2 = m.PatternScan("4E BE FA 5F 00 00 00 00 C6 06 00 00 00 00 00 00 00 00 00 00 02");
                     if (x2.Count() == 1)
                     {
-                        this.Energy = x2.First() + 0x18; // 1
+                        this.Energy = x2.First() - 0x18;
+                        if (debug)
+                            Console.WriteLine("Energy Adress: " + Energy.ToString("X"));
                     }
                 }
             }
